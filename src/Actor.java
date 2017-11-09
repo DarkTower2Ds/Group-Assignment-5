@@ -10,10 +10,23 @@ public abstract class Actor {
 
     public char getData(){return data;}
 
-
-    public boolean borderCheck();
-
     public abstract void move(char direction);
+
+
+    public boolean isAtBorder(){
+        if(currCol == 8 || currRow ==8){
+            return true;
+        }
+        else if(currCol == 0 || currRow ==0){
+            return true;
+        }
+        else{
+            return false;
+        }
+
+    }
+
+
 
 
 }
