@@ -11,7 +11,10 @@ public abstract class Actor {
     public char getData(){return data;}
 
 
-    public boolean borderCheck();
+    public boolean borderCheck()
+    {
+    	return false;
+    }
 
     public abstract void move(char direction);
 
