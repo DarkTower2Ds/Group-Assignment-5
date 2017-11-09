@@ -1,53 +1,61 @@
 public class Chicken extends Actor
 {
+	//    Default constructor to set all the variable of the Player to the
+//    center of the map.
+//        - Write the definition for the move function take in user input and
+//    
+//    Remember to consider border check.
+	public Chicken()
+	{
+		data = 'C';
+		
+		boolean keepGoing = true;
+		while(keepGoing)
+		{
+			currRow = (int) (Math.random() * 8) + 1;
+			currCol = (int) (Math.random() * 8) + 1;
+			
+			//Turns out, if the chicken doesn't start on an even numbered row and col, the game is impossible to win...
+			if(((currRow != 4) || (currCol != 4)) && ((currRow % 2 ==0) && (currCol % 2 == 0)))
+			{
+				keepGoing = false;
+			}
+		}
+	}
 
-<<<<<<< HEAD
 	@Override
 	public void move(char direction)
 	{
 		// Who knows what to do here...
-=======
-	//    Default constructor to set all the variable of the Player to the
-//    center of the map.
-//        - Write the definition for the move function take in user input and
-//    move ‘P’ up, down, left right base on “awsd” and quit for ‘q’.
-//    Remember to consider border check.
-	public Chicken(){
-		this.currRow = Math.random();
-		this.currCol = Math.random();
-		if(this.currCol == 4){
-			this.currCol = Math.random()
-		}
-		if(this.currRow == 4){
-			this.currRow = Math.random()
-		}
-		this.data = 'C';
->>>>>>> fe9beccb080951cdd24c07f0d01de6a7b94baf91
 	}
+	
+	public void move()
+	{
+		int dir;
+		boolean keepGoing = true;
+		while(keepGoing)
+		{
+			dir = (int) (Math.random() * 4) + 1;
 
-	public void move(char direction){
-		if(direction == 'w'){
-			currRow =- 1;
+			if(!wouldBeOutOfBounds(dir))
+			{
+				switch(dir)
+				{
+				case 1: currRow += 1;
+						break;
+				case 2: currRow -= 1;
+						break;
+				case 3: currCol -= 1;
+						break;
+				case 4: currCol += 1;
+						break;
+				default: System.out.println("There's been a terrible CHICKEN mistake...");
+						 break;
+				}
+				
+				keepGoing = false;
+			}
 		}
-
-		else if(direction == 's'){
-			currRow =+ 1;
-		}
-
-		else if(direction == 'a'){
-			currCol =- 1;
-		}
-
-		else if(direction == 'd'){
-			currCol =+ 1;
-		}
-
-		else{
-			System.out.println("Invalid move! Please try again.");
-			move(direction);
-		}
-
-
 	}
 
 

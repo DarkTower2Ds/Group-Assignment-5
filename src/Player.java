@@ -4,7 +4,7 @@ public class Player extends Actor
 //    Default constructor to set all the variable of the Player to the
 //    center of the map.
 //        - Write the definition for the move function take in user input and
-//    move ‘P’ up, down, left right base on “awsd” and quit for ‘q’.
+//    move [there were some characters here that Eclipse was complaining about, so I got rid of them...]
 //    Remember to consider border check.
     public Player(){
         this.currRow = 4;
@@ -14,28 +14,24 @@ public class Player extends Actor
 
     public void move(char direction){
         if(direction == 'w'){
-            currRow =- 1;
+            currRow -= 1;
         }
 
         else if(direction == 's'){
-            currRow =+ 1;
+            currRow += 1;
         }
 
         else if(direction == 'a'){
-            currCol =- 1;
+            currCol -= 1;
         }
 
         else if(direction == 'd'){
-            currCol =+ 1;
+            currCol += 1;
         }
 
         else{
             System.out.println("Invalid move! Please try again.");
             move(direction);
         }
-
-
     }
-
-
 }

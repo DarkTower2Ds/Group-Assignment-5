@@ -8,11 +8,13 @@ public class RPG
 		Player player = new Player();
 		Chicken chicken = new Chicken();
 		Scanner input = new Scanner(System.in);
-		
+				
 		char dir;		
 		boolean keepGoing = true;
 		while(keepGoing)
 		{
+			map.updateMap(chicken.getCurrRow(), chicken.getCurrCol(), chicken.getData());
+			map.updateMap(player.getCurrRow(), player.getCurrCol(), player.getData());
 			map.printMap();
 			
 			if((player.getCurrRow() == chicken.getCurrRow()) && (player.getCurrCol() == chicken.getCurrCol()))
@@ -34,11 +36,15 @@ public class RPG
 				}
 				else
 				{
-					player.move(dir);
-					chicken.move();
-					
-					map.updateMap(chicken.currRow, chicken.getCurrCol(), chicken.getData());
-					map.updateMap(player.getCurrRow(), player.getCurrCol(), player.getData());
+					if(!player.wouldBeOutOfBounds(dir))
+					{
+						player.move(dir);
+						chicken.move();
+					}
+					else
+					{
+						System.out.println("You cannot move out of bounds!");
+					}
 				}
 			}
 		}
