@@ -26,6 +26,13 @@ public abstract class Actor {
 
     }
 
+<<<<<<< HEAD
+=======
+    public boolean borderCheck()
+    {
+    	return false;
+    }
+>>>>>>> f69e8444186d9d7d0fa4435cd08026a9beaa3fd3
 
 
 
